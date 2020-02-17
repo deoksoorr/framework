@@ -4,9 +4,9 @@ public class Remote {
 
 	Machine remote;
 	
-//	public Remote(Machine machine) {
-//		remote=machine;
-//	}
+	public Remote(Machine machine) {
+		remote=machine;
+	}
 	
 	public void setRemote(Machine remote) {
 		this.remote = remote;

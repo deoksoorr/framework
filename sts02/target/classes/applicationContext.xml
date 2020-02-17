@@ -3,10 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="tv" class="com.bit.service.Tv"></bean>
-	<bean id="radio" class="com.bit.service.Radio"></bean>
-	<bean id="remote" class="com.bit.service.Remote">
-		<property name="remote" ref="radio"></property>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/class03" />
+		<property name="username" value="scott" />
+		<property name="password" value="Aa2381016" />
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />	
+	</bean>
+	<bean id="dept01Dao1" class="com.bit.model.Dept01DaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="dept01Dao2" class="com.bit.model.Dept01Dao2Impl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 
 </beans>
